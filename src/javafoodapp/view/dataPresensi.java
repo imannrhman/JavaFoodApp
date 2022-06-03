@@ -6,6 +6,7 @@ package javafoodapp.view;
 
 import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
+import javafoodapp.database.ConnectionDatabase;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +40,6 @@ public class dataPresensi extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        inputTanggalFilter = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabel_presensi = new javax.swing.JTable();
@@ -52,16 +52,17 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         bersih = new javax.swing.JButton();
         inputID = new javax.swing.JTextField();
         inputNama = new javax.swing.JTextField();
-        filter = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         inputTanggal = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
+        inputCari = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Data Presensi");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabel_presensi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,11 +84,16 @@ public class dataPresensi extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(jScrollPane2);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 166, 554, 207));
+
         jLabel1.setText("ID");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 169, -1, -1));
 
         jLabel2.setText("Nama");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 207, -1, -1));
 
         jLabel3.setText("Tanggal");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 242, -1, -1));
 
         tambah.setText("Tambah");
         tambah.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +101,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
                 tambahActionPerformed(evt);
             }
         });
+        getContentPane().add(tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 285, -1, -1));
 
         hapus.setText("Hapus");
         hapus.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +109,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
                 hapusActionPerformed(evt);
             }
         });
+        getContentPane().add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 321, 71, -1));
 
         ubah.setText("Ubah");
         ubah.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +117,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
                 ubahActionPerformed(evt);
             }
         });
+        getContentPane().add(ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 285, 79, -1));
 
         bersih.setText("Bersihkan");
         bersih.addActionListener(new java.awt.event.ActionListener() {
@@ -116,102 +125,24 @@ public class dataPresensi extends javax.swing.JInternalFrame {
                 bersihActionPerformed(evt);
             }
         });
+        getContentPane().add(bersih, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 321, -1, -1));
+        getContentPane().add(inputID, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 166, 139, -1));
+        getContentPane().add(inputNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 204, 139, -1));
+        getContentPane().add(inputTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 242, 139, -1));
 
-        filter.setText("Filter");
-        filter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Refresh");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("DATA PRESENSI");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 47, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
-                                        .addGap(31, 31, 31)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(inputNama)
-                                            .addComponent(inputTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(inputID)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(hapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(34, 58, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(ubah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(inputTanggalFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(filter)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(jLabel4)))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputTanggalFilter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(filter)
-                        .addComponent(jButton5)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(inputTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tambah)
-                            .addComponent(ubah))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hapus)
-                            .addComponent(bersih))))
-                .addGap(222, 222, 222))
-        );
+        inputCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                inputCariKeyReleased(evt);
+            }
+        });
+        getContentPane().add(inputCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 139, 178, -1));
+
+        jLabel5.setText("Cari");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 142, 31, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,8 +180,8 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         }else{
             try{
             String q = "INSERT INTO presensi (id, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
-            Connection conn = (Connection)KoneksiDB.configDB();
-            //Connection conn = (Connection)ConnectionDatabase.getConnection();
+            //Connection conn = (Connection)KoneksiDB.configDB();
+            Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
             s.execute();
             JOptionPane.showMessageDialog(null, "Berhasil ditambahkan");
@@ -262,24 +193,6 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         }
     }                         
     }//GEN-LAST:event_tambahActionPerformed
-
-    private void filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterActionPerformed
-        // TODO add your handling code here:
-        SimpleDateFormat filter = new SimpleDateFormat("yyyy-MM-dd");
-        String date = filter.format(inputTanggalFilter.getDate());
-        DefaultTableModel model = (DefaultTableModel) tabel_presensi.getModel();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel> (model);
-        tabel_presensi.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(date.trim()));
-        
-    }//GEN-LAST:event_filterActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)tabel_presensi.getModel();
-        model.setRowCount(0);
-        tampil_tabel();
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         // TODO add your handling code here:
@@ -293,8 +206,8 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         }else{
             try{
             String q = "DELETE FROM presensi WHERE id = '"+id+"'";
-            Connection conn = (Connection)KoneksiDB.configDB();
-            //Connection conn = (Connection)ConnectionDatabase.getConnection();
+            //Connection conn = (Connection)KoneksiDB.configDB();
+            Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
             s.execute();
             JOptionPane.showMessageDialog(null, "Berhasil dihapus");
@@ -319,8 +232,8 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         }else{
             try{
             String q = "UPDATE presensi SET id = '"+id+"', nama = '"+nama+"', tanggal = '"+tanggal+"' WHERE id = '"+id+"'";
-            Connection conn = (Connection)KoneksiDB.configDB();
-            //Connection conn = (Connection)ConnectionDatabase.getConnection();
+            //Connection conn = (Connection)KoneksiDB.configDB();
+            Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
             s.execute();
             JOptionPane.showMessageDialog(null, "Berhasil diubah");
@@ -338,6 +251,15 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         // TODO add your handling code here:\
         bersih();
     }//GEN-LAST:event_bersihActionPerformed
+
+    private void inputCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCariKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tabel_presensi.getModel();
+        String search = inputCari.getText().toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tabel_presensi.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_inputCariKeyReleased
     
 
     private void tampil_tabel(){
@@ -352,7 +274,8 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             //1. Query
             String query = "SELECT * FROM presensi";
             //2. Panggil fungsi koneksi
-            Connection conn = (Connection)KoneksiDB.configDB();
+            //Connection conn = (Connection)KoneksiDB.configDB();
+            Connection conn = (Connection)ConnectionDatabase.getConnection();
             //3. Kirim parameter fungsi java ke sql
             java.sql.Statement s = conn.createStatement();
             //4. Eksekusi query
@@ -377,17 +300,16 @@ public class dataPresensi extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bersih;
-    private javax.swing.JButton filter;
     private javax.swing.JButton hapus;
+    private javax.swing.JTextField inputCari;
     private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputNama;
     private com.toedter.calendar.JDateChooser inputTanggal;
-    private com.toedter.calendar.JDateChooser inputTanggalFilter;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabel_presensi;

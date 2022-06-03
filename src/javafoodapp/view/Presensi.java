@@ -7,8 +7,7 @@ package javafoodapp.view;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-//import javafoodapp.database.ConnectionDatabase;
+import javafoodapp.database.ConnectionDatabase;
 
 /**
  *
@@ -79,12 +78,10 @@ public class Presensi extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel5)
                         .addComponent(inputNama)
@@ -111,7 +108,7 @@ public class Presensi extends javax.swing.JInternalFrame {
                 .addComponent(inputTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,18 +120,18 @@ public class Presensi extends javax.swing.JInternalFrame {
         String nama = inputNama.getText();
         SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
         String tanggal = sdf.format(inputTanggal.getDate());
-        //String alamat = (String) inputKota.getSelectedItem();
         
-        if(nama.equals("")){
-            JOptionPane.showMessageDialog(null, "Isi Nama dan Alamat Terlebih Dahulu!");
+        if(id.equals("") || nama.equals("") || tanggal.equals("")){
+            JOptionPane.showMessageDialog(null, "Isi data terlebih dahulu!");
         }else{
             try{
             String q = "INSERT INTO presensi (id, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
-            Connection conn = (Connection)KoneksiDB.configDB();
-            //Connection conn = (Connection)ConnectionDatabase.getConnection();
+            //Connection conn = (Connection)KoneksiDB.configDB();
+            Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
             s.execute();
             JOptionPane.showMessageDialog(null, "Presensi Berhasil");
+            bersih();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Presensi Gagal");
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -142,6 +139,11 @@ public class Presensi extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     }
 
+    private void bersih(){
+        inputID.setText("");
+        inputNama.setText("");
+        inputTanggal.setDate(null);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField inputID;
     private javax.swing.JTextField inputNama;
