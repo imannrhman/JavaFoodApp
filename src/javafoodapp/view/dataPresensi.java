@@ -40,9 +40,6 @@ public class dataPresensi extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabel_presensi = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -54,18 +51,81 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         inputNama = new javax.swing.JTextField();
         inputTanggal = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        inputCari = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        inputCari = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabel_presensi = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Data Presensi");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("ID");
+
+        jLabel2.setText("Nama");
+
+        jLabel3.setText("Tanggal");
+
+        tambah.setText("Tambah");
+        tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahActionPerformed(evt);
+            }
+        });
+
+        hapus.setText("Hapus");
+        hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusActionPerformed(evt);
+            }
+        });
+
+        ubah.setText("Ubah");
+        ubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubahActionPerformed(evt);
+            }
+        });
+
+        bersih.setText("Bersihkan");
+        bersih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bersihActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("DATA PRESENSI");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Cari");
+
+        inputCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                inputCariKeyReleased(evt);
+            }
+        });
 
         tabel_presensi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,67 +142,79 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tabel_presensi);
 
-        jScrollPane1.setViewportView(jScrollPane2);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 166, 554, 207));
-
-        jLabel1.setText("ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 169, -1, -1));
-
-        jLabel2.setText("Nama");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 207, -1, -1));
-
-        jLabel3.setText("Tanggal");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 242, -1, -1));
-
-        tambah.setText("Tambah");
-        tambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambahActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tambah, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 285, -1, -1));
-
-        hapus.setText("Hapus");
-        hapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hapusActionPerformed(evt);
-            }
-        });
-        getContentPane().add(hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 321, 71, -1));
-
-        ubah.setText("Ubah");
-        ubah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ubahActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 285, 79, -1));
-
-        bersih.setText("Bersihkan");
-        bersih.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bersihActionPerformed(evt);
-            }
-        });
-        getContentPane().add(bersih, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 321, -1, -1));
-        getContentPane().add(inputID, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 166, 139, -1));
-        getContentPane().add(inputNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 204, 139, -1));
-        getContentPane().add(inputTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 242, 139, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("DATA PRESENSI");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 47, -1, -1));
-
-        inputCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                inputCariKeyReleased(evt);
-            }
-        });
-        getContentPane().add(inputCari, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 139, 178, -1));
-
-        jLabel5.setText("Cari");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 142, 31, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(311, 311, 311))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(inputCari, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(inputNama)
+                                    .addComponent(inputTanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(inputID)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(hapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(34, 58, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ubah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(inputCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(inputID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(inputTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tambah)
+                            .addComponent(ubah))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(hapus)
+                            .addComponent(bersih)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(320, 320, 320))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,7 +274,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         String tanggal = sdf.format(inputTanggal.getDate());
         
         if(id.equals("")){
-            JOptionPane.showMessageDialog(null, "Data Terlebih Dahulu!");
+            JOptionPane.showMessageDialog(null, "Isi data Terlebih Dahulu!");
         }else{
             try{
             String q = "DELETE FROM presensi WHERE id = '"+id+"'";
@@ -218,8 +290,9 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Gagal dihapus");
             JOptionPane.showMessageDialog(this, e.getMessage());
             }
+    } 
     }//GEN-LAST:event_hapusActionPerformed
-    }
+
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
         // TODO add your handling code here:
         String id = inputID.getText();
@@ -227,8 +300,8 @@ public class dataPresensi extends javax.swing.JInternalFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
         String tanggal = sdf.format(inputTanggal.getDate());
         
-        if(id.equals("")){
-            JOptionPane.showMessageDialog(null, "Data Terlebih Dahulu!");
+        if(id.equals("") || nama.equals("") || tanggal.equals("")){
+            JOptionPane.showMessageDialog(null, "Isi data Terlebih Dahulu!");
         }else{
             try{
             String q = "UPDATE presensi SET id = '"+id+"', nama = '"+nama+"', tanggal = '"+tanggal+"' WHERE id = '"+id+"'";
@@ -238,12 +311,12 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             s.execute();
             JOptionPane.showMessageDialog(null, "Berhasil diubah");
             bersih();
-            tampil_tabel();
             }
             catch(Exception e){
             JOptionPane.showMessageDialog(null, "Gagal diubah");
             JOptionPane.showMessageDialog(this, e.getMessage());
             }
+            tampil_tabel();
     }                                     
     }//GEN-LAST:event_ubahActionPerformed
 
@@ -255,7 +328,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
     private void inputCariKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputCariKeyReleased
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tabel_presensi.getModel();
-        String search = inputCari.getText().toLowerCase();
+        String search = inputCari.getText();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         tabel_presensi.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
@@ -274,7 +347,6 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             //1. Query
             String query = "SELECT * FROM presensi";
             //2. Panggil fungsi koneksi
-            //Connection conn = (Connection)KoneksiDB.configDB();
             Connection conn = (Connection)ConnectionDatabase.getConnection();
             //3. Kirim parameter fungsi java ke sql
             java.sql.Statement s = conn.createStatement();
@@ -310,7 +382,6 @@ public class dataPresensi extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabel_presensi;
     private javax.swing.JButton tambah;
