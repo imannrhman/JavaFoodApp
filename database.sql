@@ -21,6 +21,15 @@ create or replace table users
     on delete set null
 );
 
+create or replace table presensi
+(
+  id_presensi int auto_increment
+  primary key,
+  id int(8) null
+  nama varchar(256) null,
+  tanggal date null
+);
+
 insert into db_restaurant.role (id, name) values (1, 'Owner');
 insert into db_restaurant.role (id, name) values (2, 'Admin');
 insert into db_restaurant.role (id, name) values (3, 'Karyawan');
