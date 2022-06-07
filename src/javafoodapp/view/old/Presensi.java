@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package javafoodapp.view;
+package javafoodapp.view.old;
 
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
@@ -125,7 +125,7 @@ public class Presensi extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Isi data terlebih dahulu!");
         }else{
             try{
-            String q = "INSERT INTO presensi (id, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
+            String q = "INSERT INTO presensi (id_user, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
             //Connection conn = (Connection)KoneksiDB.configDB();
             Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);

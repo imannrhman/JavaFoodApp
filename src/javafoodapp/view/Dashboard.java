@@ -4,19 +4,61 @@
  */
 package javafoodapp.view;
 
-import javax.swing.JOptionPane;
+import javafoodapp.event.EventMenuSelected;
+import javafoodapp.view.pages.*;
+
+import javax.swing.*;
 
 /**
  *
- * @author Lenovo
+ * @author imannrhman
  */
 public class Dashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard() {
+    private HomePage home;
+
+    public Dashboard(int idUser) {
         initComponents();
+
+        home = new HomePage(mainPanel);
+        menu.initMoving(Dashboard.this);
+        setForm(home);
+        menu.addEventMenuSelected(new EventMenuSelected() {
+            @Override
+            public void selected(int index) {
+                if (index == 0) {
+                    setForm(home);
+                } else if (index == 1) {
+                    setForm(new PresensiPage(mainPanel, idUser));
+                } else if (index == 2) {
+                    setForm(new BahanBakuPage(mainPanel));
+                } else if (index == 3) {
+                    setForm(new MenuMakananPage(mainPanel));
+                } else if (index == 4) {
+                    setForm(new TransaksiPage(mainPanel));
+                } else if (index == 5) {
+                    logout();
+                } else {
+                    logout();
+                }
+            }
+        });
+
+    }
+
+    private void setForm(JComponent com) {
+        mainPanel.removeAll();
+        mainPanel.add(com);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }
+    
+    private void logout() {
+        this.setVisible(false);
+        new Login().setVisible(true);
     }
 
     /**
@@ -28,75 +70,66 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        layar = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        panelBorder1 = new javafoodapp.swing.PanelBorder();
+        menu = new javafoodapp.component.Menu();
+        mainPanel = new javax.swing.JPanel();
+        panelBorder2 = new javafoodapp.swing.PanelBorder();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1100, 600));
 
-        javax.swing.GroupLayout layarLayout = new javax.swing.GroupLayout(layar);
-        layar.setLayout(layarLayout);
-        layarLayout.setHorizontalGroup(
-            layarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        panelBorder1.setPreferredSize(new java.awt.Dimension(1100, 600));
+
+        menu.setPreferredSize(new java.awt.Dimension(225, 650));
+
+        mainPanel.setPreferredSize(new java.awt.Dimension(1100, 600));
+        mainPanel.setLayout(new java.awt.BorderLayout());
+
+        panelBorder2.setPreferredSize(new java.awt.Dimension(1000, 650));
+
+        javax.swing.GroupLayout panelBorder2Layout = new javax.swing.GroupLayout(panelBorder2);
+        panelBorder2.setLayout(panelBorder2Layout);
+        panelBorder2Layout.setHorizontalGroup(
+            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1276, Short.MAX_VALUE)
         );
-        layarLayout.setVerticalGroup(
-            layarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+        panelBorder2Layout.setVerticalGroup(
+            panelBorder2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Menu");
+        mainPanel.add(panelBorder2, java.awt.BorderLayout.CENTER);
 
-        jMenuItem1.setText("Presensi");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Data Presensi");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
+        javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
+        panelBorder1.setLayout(panelBorder1Layout);
+        panelBorder1Layout.setHorizontalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBorder1Layout.createSequentialGroup()
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1276, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        panelBorder1Layout.setVerticalGroup(
+            panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layar)
+            .addComponent(panelBorder1, 1507, 1507, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layar)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        Presensi p = new Presensi();
-        layar.add(p);
-        p.setVisible(true);
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-         //TODO add your handling code here:
-          dataPresensi dp = new dataPresensi();
-          layar.add(dp);
-          dp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,7 +142,7 @@ public class Dashboard extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Flatlaf Light".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -124,21 +157,19 @@ public class Dashboard extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard(1).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JDesktopPane layar;
+    private javax.swing.JPanel mainPanel;
+    private javafoodapp.component.Menu menu;
+    private javafoodapp.swing.PanelBorder panelBorder1;
+    private javafoodapp.swing.PanelBorder panelBorder2;
     // End of variables declaration//GEN-END:variables
 }

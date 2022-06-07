@@ -1,10 +1,12 @@
 package javafoodapp.database.dao.auth;
 
+import javafoodapp.model.Auth;
 import javafoodapp.model.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ImplementAuth {
-    public void register(String username, String fullName, String password, String phone, int roleId);
-    public User login(String username, String password);
+     void register(Auth auth) throws SQLException;
+     User login(String username, String password) throws SQLException;
 }

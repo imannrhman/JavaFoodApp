@@ -1,171 +1,118 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jun 03, 2022 at 08:47 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+create or replace table bahan_baku
+(
+    id              int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    kode_bahan      varchar(20)  null,
+    nama_bahan      varchar(256) not null,
+    harga           double       not null,
+    kategori_barang varchar(256) not null,
+    stok            int(20)      not null,
+    constraint bahan_baku_kode_bahan_uindex
+    unique (kode_bahan)
+);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+create or replace table menu_makanan
+(
+    id           int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    kode_menu    varchar(20)  null,
+    menu_makanan varchar(256) null,
+    harga        double       null
+);
 
+create or replace table menu_bahan
+(
+    id         int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    id_bahan   int null,
+    id_makanan int null,
+    constraint menu_bahan_bahan_baku_id_fk
+    foreign key (id_bahan) references bahan_baku (id)
+    on delete set null,
+    constraint menu_bahan_menu_makanan_id_fk
+    foreign key (id_makanan) references menu_makanan (id)
+    on delete cascade
+);
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+create or replace table role
+(
+    id   int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    name varchar(256) null
+);
 
---
--- Database: `db_restaurant`
---
+create or replace table transaksi
+(
+    id             int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    kode_transaksi varchar(20) null,
+    tanggal        date        null,
+    status         varchar(50) null
+);
 
--- --------------------------------------------------------
+create or replace table transaksi_menu
+(
+    id           int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    id_transaksi int null,
+    id_menu      int null,
+    constraint transaksi_menu_menu_makanan_id_fk
+    foreign key (id_menu) references menu_makanan (id)
+    on delete set null,
+    constraint transaksi_menu_transaksi_id_fk
+    foreign key (id_transaksi) references transaksi (id)
+);
 
---
--- Table structure for table `barang`
---
-
-CREATE TABLE `barang` (
-  `id_barang` varchar(20) NOT NULL,
-  `nama_barang` varchar(20) NOT NULL,
-  `kategori_barang` varchar(20) NOT NULL,
-  `harga` int(20) NOT NULL,
-  `stok` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `barang`
---
-
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `kategori_barang`, `harga`, `stok`) VALUES
-('BRG01', 'tepung', 'makanan', 10000, 25),
-('BRG02', 'Air Mineral', 'Minuman', 5000, 45),
-('BRG03', 'Susu', 'minuman', 15000, 100);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `presensi`
---
-
-CREATE TABLE `presensi` (
-  `id_presensi` int(11) NOT NULL,
-  `id` int(8) DEFAULT NULL,
-  `nama` varchar(256) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role`
---
-
-CREATE TABLE `role` (
-  `id` int(11) NOT NULL,
-  `name` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `role`
---
-
-INSERT INTO `role` (`id`, `name`) VALUES
-(1, 'Owner'),
-(2, 'Admin'),
-(3, 'Karyawan'),
-(4, 'Customer');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `full_name` varchar(256) DEFAULT NULL,
-  `username` varchar(256) DEFAULT NULL,
-  `password` varchar(256) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `role_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `barang`
---
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`);
-
---
--- Indexes for table `presensi`
---
-ALTER TABLE `presensi`
-  ADD PRIMARY KEY (`id_presensi`);
-
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_telephone_uindex` (`phone`),
-  ADD KEY `users_role_id_fk` (`role_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `presensi`
---
-ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE SET NULL;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
+create or replace table users
+(
+    id        int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    full_name varchar(256) null,
+    username  varchar(256) null,
+    password  varchar(256) null,
+    phone     varchar(20)  null,
+    role_id   int          null,
+    constraint users_telephone_uindex
+    unique (phone),
+    constraint users_role_id_fk
+    foreign key (role_id) references role (id)
+    on delete set null
+);
 
 create or replace table presensi
 (
-  id_presensi int auto_increment
-  primary key,
-  id int(8) null
-  nama varchar(256) null,
-  tanggal date null
+    id      int auto_increment
+    constraint `PRIMARY`
+    primary key,
+    id_user int         null,
+    tanggal datetime    null,
+    status  varchar(50) null,
+    constraint presensi_users_id_fk
+    foreign key (id_user) references users (id)
 );
+
+create or replace procedure inputMenuBahan(IN id_menuIn int, IN namaBahan varchar(255))
+begin
+    declare id_bahan_var int(11);
+select id into id_bahan_var from bahan_baku where nama_bahan = namaBahan;
+insert into menu_bahan (id_bahan, id_makanan)  values (id_bahan_var, id_menuIn);
+end;
+
+create or replace procedure registerUser(IN fullNameIn varchar(255), IN usernameIn varchar(255),
+                                         IN passwordIn varchar(255), IN phoneIn varchar(20), IN roleName varchar(255))
+BEGIN
+    declare roleId int(8);
+
+select id into roleId from role where role.name = roleName;
+
+insert into users (full_name, username, password, phone, role_id)
+values (fullNameIn, usernameIn, passwordIn, phoneIn, roleId);
+end;
+
