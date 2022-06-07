@@ -39,7 +39,7 @@ CREATE TABLE `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `kategori_barang`, `harga`, `stok`) VALUES
+INSERT INTO bahan_baku (id, nama_bahan, `kategori_barang`, `harga`, `stok`) VALUES
 ('BRG01', 'tepung', 'makanan', 10000, 25),
 ('BRG02', 'Air Mineral', 'Minuman', 5000, 45),
 ('BRG03', 'Susu', 'minuman', 15000, 100);
@@ -100,14 +100,14 @@ CREATE TABLE `users` (
 --
 -- Indexes for table `barang`
 --
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`);
+ALTER TABLE bahan_baku
+  ADD PRIMARY KEY (id);
 
 --
 -- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
-  ADD PRIMARY KEY (`id_presensi`);
+  ADD PRIMARY KEY (id);
 
 --
 -- Indexes for table `role`
@@ -131,7 +131,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY id int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -165,7 +165,7 @@ create or replace table presensi
 (
   id_presensi int auto_increment
   primary key,
-  id int(8) null
+  id int(8) null,
   nama varchar(256) null,
   tanggal date null
 );

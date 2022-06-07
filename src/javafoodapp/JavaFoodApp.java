@@ -4,6 +4,7 @@
  */
 package javafoodapp;
 
+import javafoodapp.view.old.Dashboard;
 import javafoodapp.view.Login;
 
 /**

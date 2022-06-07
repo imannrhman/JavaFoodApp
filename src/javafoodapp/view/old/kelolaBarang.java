@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package javafoodapp.view;
+package javafoodapp.view.old;
 
 //import com.sun.jdi.connect.spi.Connection;
-import javafoodapp.database.koneksiDatabase;
+import javafoodapp.database.ConnectionDatabase;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -530,8 +530,8 @@ public class kelolaBarang extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Isi stok dulu");
         } else {
             try {
-            String Q = "INSERT INTO barang (id_barang, nama_barang, kategori_barang, harga, stok) VALUES ('"+idb+"','"+nm+"','"+kt+"','"+hg+"','"+st+"')";
-            java.sql.Connection vcomm = (Connection)koneksiDatabase.getkoneksi();
+            String Q = "INSERT INTO bahan_baku (id, nama_bahan, kategori_barang, harga, stok) VALUES ('"+idb+"','"+nm+"','"+kt+"','"+hg+"','"+st+"')";
+            java.sql.Connection vcomm = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = vcomm.prepareStatement(Q);
             s.execute();
             JOptionPane.showMessageDialog(null, "Tambah data berhasil");
@@ -558,8 +558,8 @@ public class kelolaBarang extends javax.swing.JInternalFrame {
         String st = stok_edit.getText();
         try {
         
-        String SQL = "UPDATE barang set id_barang= '"+idb+"',nama_barang= '"+nm+"' ,kategori_barang= '"+kt+"' ,harga= '"+hg+"' ,stok= '"+st+"' WHERE id_barang='"+idb+"' ";
-        Connection Vconn = (Connection)koneksiDatabase.getkoneksi();
+        String SQL = "UPDATE bahan_baku set id= '"+idb+"',nama_bahan= '"+nm+"' ,kategori_barang= '"+kt+"' ,harga= '"+hg+"' ,stok= '"+st+"' WHERE id='"+idb+"' ";
+        Connection Vconn = (Connection)ConnectionDatabase.getConnection();
         java.sql.PreparedStatement pst = Vconn.prepareStatement(SQL);
         pst.execute();
         JOptionPane.showMessageDialog(null, "Data telah dirubah");
@@ -580,9 +580,9 @@ public class kelolaBarang extends javax.swing.JInternalFrame {
         
         try {
             //query
-            String querydel = "Delete from barang where id_barang='"+idb+"'";
+            String querydel = "Delete from bahan_baku where id='"+idb+"'";
             //koneksi
-            Connection Vconn = (Connection)koneksiDatabase.getkoneksi();
+            Connection Vconn = (Connection)ConnectionDatabase.getConnection();
             // statement
             java.sql.PreparedStatement stm = Vconn.prepareStatement(querydel);
             // eksekusi querydel
@@ -608,11 +608,11 @@ public class kelolaBarang extends javax.swing.JInternalFrame {
         try {
             int counter = 1;
             //Query
-            String query = "SELECT * FROM barang";
+            String query = "SELECT * FROM bahan_baku";
             
             //fungsi koneksi
 //            java.sql.Connection vcomm = (java.sql.Connection)(Connection)ConnectionDatabase.getConnection();
-            java.sql.Connection vconn = (Connection)koneksiDatabase.getkoneksi();
+            java.sql.Connection vconn = (Connection)ConnectionDatabase.getConnection();
             
             //kirim parameter java ke sql
             java.sql.Statement s = vconn.createStatement();

@@ -10,5 +10,7 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.29" level="project" />
     <orderEntry type="library" name="miglayout-core-5.2" level="project" />
     <orderEntry type="library" name="timingframework-1.0" level="project" />
+    <orderEntry type="library" name="jcalendar-1.4" level="project" />
+    <orderEntry type="library" name="swingx-autocomplete-1.6.5-1" level="project" />
   </component>
 </module>

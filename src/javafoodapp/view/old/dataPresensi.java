@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package javafoodapp.view;
+package javafoodapp.view.old;
 
-import com.toedter.calendar.JDateChooser;
 import java.sql.Connection;
 import javafoodapp.database.ConnectionDatabase;
 import java.text.ParseException;
@@ -251,7 +250,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Isi Data Terlebih Dahulu!");
         }else{
             try{
-            String q = "INSERT INTO presensi (id, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
+            String q = "INSERT INTO presensi (id_user, nama, tanggal) VALUES ('"+id+"', '"+nama+"', '"+tanggal+"')";
             //Connection conn = (Connection)KoneksiDB.configDB();
             Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
@@ -277,7 +276,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Isi data Terlebih Dahulu!");
         }else{
             try{
-            String q = "DELETE FROM presensi WHERE id = '"+id+"'";
+            String q = "DELETE FROM presensi WHERE id_user = '"+id+"'";
             //Connection conn = (Connection)KoneksiDB.configDB();
             Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
@@ -304,7 +303,7 @@ public class dataPresensi extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Isi data Terlebih Dahulu!");
         }else{
             try{
-            String q = "UPDATE presensi SET id = '"+id+"', nama = '"+nama+"', tanggal = '"+tanggal+"' WHERE id = '"+id+"'";
+            String q = "UPDATE presensi SET id_user = '"+id+"', nama = '"+nama+"', tanggal = '"+tanggal+"' WHERE id_user = '"+id+"'";
             //Connection conn = (Connection)KoneksiDB.configDB();
             Connection conn = (Connection)ConnectionDatabase.getConnection();
             java.sql.PreparedStatement s = conn.prepareStatement(q);
